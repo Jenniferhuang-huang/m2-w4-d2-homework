@@ -86,6 +86,15 @@
         height: 70px;
         border-right: 5px solid white;
       }
+      #infobox{
+        width: 300px;
+        background-color: black;
+        opacity: 0.9;
+        color:white;
+        position: fixed;
+        top:25%;
+        padding-left: 10px;
+      }
     </style>
   </head>
   <body>
@@ -110,8 +119,10 @@
               <p>{{post.message}}</p>
             </div>
             <div id="infobox" v-for="post in posts" v-if="post.showbox">
-                {{post.bio}}
-              </div>
+                <h3>{{post.name}}</h3>
+                <p>Foodie_level: {{post.foodie_level}}</p>
+                <p>{{post.bio}}</p>     
+            </div>
           </div>
         </section>
       </main>
