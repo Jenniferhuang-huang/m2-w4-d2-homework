@@ -5,6 +5,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- bootstrap  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
@@ -14,14 +33,18 @@
       * {
         font-family: Arial, Helvetica, sans-serif;
       }
+      body {
+        height: 100%;
+      }
       #leftside {
         float: left;
         width: 30%;
         min-height: 1400px;
+        height: 100%;
         background-color: rgb(77, 192, 154);
       }
       #rightside {
-        float: left;
+        float: right;
         width: 70%;
         min-height: 1400px;
         background-color: rgb(238, 226, 192);
@@ -42,12 +65,15 @@
         font-size: 2.75em;
         padding: 0.5em;
         color: rgb(216, 150, 7);
+        position: fixed;
+        top: -20px;
       }
       header span {
         font-family: "Sacramento", cursive;
       }
       main {
         position: relative;
+        height: 100%;
       }
       main h2 {
         position: absolute;
@@ -60,6 +86,7 @@
       main #photos img {
         margin: 0.75em;
         border: 0.85em solid rgb(255, 255, 255);
+        margin-top: -2500px;
       }
       section#blogposts {
         position: absolute;
@@ -74,7 +101,7 @@
         border-radius: 0.5em;
       }
       footer {
-        position: absolute;
+        position: relative;
         bottom: 0;
         height: 50px;
         width: 100%;
@@ -84,49 +111,63 @@
       .post img {
         width: 70px;
         height: 70px;
-        border-right: 5px solid white;
       }
-      #infobox{
+      #infobox {
         width: 200px;
         background-color: black;
         opacity: 0.9;
-        color:white;
+        color: white;
         position: fixed;
-        top:25%;
+        top: 25%;
         padding-left: 10px;
-        border-radius:15px;
+        border-radius: 15px;
         padding-right: 10px;
       }
     </style>
   </head>
   <body>
-    <aside id="leftside"></aside>
-    <aside id="rightside"></aside>
-    <div id="container">
+    <div id="container-fluid">
+      <aside id="leftside"></aside>
+      <aside id="rightside"></aside>
       <header><span>Food Blog</span></header>
 
       <main>
-        <aside id="photos">
-          <img src="images/chili.jpg" alt="White Chicken Chili" width="180" />
-        </aside>
-        <h2>Comments</h2>
+        <div id="vueapp">
+          <aside id="photos">
+            <img
+              v-bind:src="url"
+              alt="White Chicken Chili"
+              width="180"
+              class="img-fluid"
+            />
+          </aside>
+          <h2>Comments</h2>
 
-        <section id="blogposts">
-          <div id="vueapp">
+          <section id="blogposts">
             <div class="post" v-for="post in posts">
-              <span class="url"><img v-on:click="displayinfo(posts,post)" v-bind:src="post.url"/></span>
+              <span class="url"
+                ><img
+                  v-on:click="displayinfo(posts,post)"
+                  v-bind:src="post.url"
+                  class="img-thumbnail"
+              /></span>
               <span class="author">{{post.name}}</span>
               <span class="date">{{post.date}}</span>
               <span class="reply">{{post.reply}}</span>
               <p>{{post.message}}</p>
             </div>
             <div id="infobox" v-for="post in posts" v-if="post.showbox">
-                <h3>{{post.name}}</h3>
-                <p>Foodie_level: {{post.foodie_level}}</p>
-                <p>Bio: {{post.bio}}</p>     
+              <h3>{{post.name}}</h3>
+              <p>Foodie_level: {{post.foodie_level}}</p>
+              <p>Bio: {{post.bio}}</p>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                aria-label="Close"
+              ></button>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
 
       <footer>&copy; Copyright FOOD BLOG</footer>
@@ -143,8 +184,9 @@
               bio: "Food enthusiast. Love to cook and experiment. Into only organic, fat free, sugar free stuffs!",
               date: "February 18, 2021 @ 3:30 pm",
               reply: "REPLY",
-              message:'Was amazing! My Walmart didn’t have coriander in stock and didn’t have ground cumin. I used serrano instead of jalapeño. It was just like my favorite tortilla soup from BJs. I am sending this recipe to my family. I want everyone to try it!',
-              showbox:false
+              message:
+                "Was amazing! My Walmart didn’t have coriander in stock and didn’t have ground cumin. I used serrano instead of jalapeño. It was just like my favorite tortilla soup from BJs. I am sending this recipe to my family. I want everyone to try it!",
+              showbox: false,
             },
             {
               url: "images/profile.png",
@@ -153,8 +195,9 @@
               bio: "Love food! Grew up with meat and potatoes. Recently venture outside my comfort zone. Loving everything I have been eating so far. Thai is my favorite at this time.",
               date: "February 15, 2021 @ 9:46 am",
               reply: "REPLY",
-              message:'I just made this soup today and it’s so tasty! didn’t have corn at home but still turned out very good.  It’s a winner!  I made beef chili for my parents; but since my dad has gout he can’t eat beef; this white chicken chili is perfect for him.  Thank you Lisa!',
-              showbox:false
+              message:
+                "I just made this soup today and it’s so tasty! didn’t have corn at home but still turned out very good.  It’s a winner!  I made beef chili for my parents; but since my dad has gout he can’t eat beef; this white chicken chili is perfect for him.  Thank you Lisa!",
+              showbox: false,
             },
             {
               url: "images/profile.png",
@@ -163,8 +206,9 @@
               bio: "I have to say I never was the adventurous type until 2 years ago. My boyfriend, who is of Japanese background, exposed me to other cultural food and I have never look back since!",
               date: "February 13, 2021 @ 12:58 pm",
               reply: "REPLY",
-              message:'I LOVE this White Chicken Chili! You are right, it is satiating meal—delicious with toasted bread. Refreshingly different taste than any chicken chili I’ve made in the past. I made it exactly as written and added some chopped zucchini, carrots, and celery. Instead of shredding the chicken, I chopped it into small pieces. It freezes very well. Will be an all-time favorite, for sure.',
-              showbox:false
+              message:
+                "I LOVE this White Chicken Chili! You are right, it is satiating meal—delicious with toasted bread. Refreshingly different taste than any chicken chili I’ve made in the past. I made it exactly as written and added some chopped zucchini, carrots, and celery. Instead of shredding the chicken, I chopped it into small pieces. It freezes very well. Will be an all-time favorite, for sure.",
+              showbox: false,
             },
             {
               url: "images/profile.png",
@@ -173,21 +217,27 @@
               bio: "Food is my passion. So is cooking. I love to experiment and try new things. I have to admit I'm a food whore! Invite me over for dinner and I'll be there!",
               date: "February 13, 2021 @ 11:31 am",
               reply: "REPLY",
-              message:'This recipe is dynamite! My partner usually won’t eat beans but he finished the whole pot (darn was hoping to have some for leftovers haha). This is crowd-pleaser that I am going to add to my regular recipe rotation. Thanks so much, Lisa!',
-              showbox:false
+              message:
+                "This recipe is dynamite! My partner usually won’t eat beans but he finished the whole pot (darn was hoping to have some for leftovers haha). This is crowd-pleaser that I am going to add to my regular recipe rotation. Thanks so much, Lisa!",
+              showbox: false,
             },
           ],
+          url: "images/chili.jpg",
         },
+
         methods: {
           displayinfo: function (posts, post) {
-            for (var i=0; i<posts.length; i++){
-              posts[i].showbox=false;
-              post.showbox=true;
+            for (var i = 0; i < posts.length; i++) {
+              posts[i].showbox = false;
+              post.showbox = true;
             }
-            
           },
         },
       });
     </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
