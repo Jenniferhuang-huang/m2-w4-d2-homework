@@ -48,7 +48,10 @@ var app = new Vue({
       },
     ],
     url: "images/chili.jpg",
-    nav: `<nav
+  },
+  components: {
+    mynav: {
+      template: `<div class="main-header sticky-top"><nav
             class="navbar navbar-expand-lg bg-dark navbar-light main-menu"
           >
             <button
@@ -81,7 +84,8 @@ var app = new Vue({
                 </li>
               </ul>
             </div>
-          </nav>`,
+          </nav></div> `,
+    },
   },
 
   methods: {
