@@ -87,13 +87,15 @@
         border-right: 5px solid white;
       }
       #infobox{
-        width: 300px;
+        width: 200px;
         background-color: black;
         opacity: 0.9;
         color:white;
         position: fixed;
         top:25%;
         padding-left: 10px;
+        border-radius:15px;
+        padding-right: 10px;
       }
     </style>
   </head>
@@ -121,7 +123,7 @@
             <div id="infobox" v-for="post in posts" v-if="post.showbox">
                 <h3>{{post.name}}</h3>
                 <p>Foodie_level: {{post.foodie_level}}</p>
-                <p>{{post.bio}}</p>     
+                <p>Bio: {{post.bio}}</p>     
             </div>
           </div>
         </section>
