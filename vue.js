@@ -51,7 +51,8 @@ var app = new Vue({
   },
   components: {
     mynav: {
-      template: `<div class="main-header sticky-top"><nav
+      template: `<div class="main-header sticky-top">
+        <nav
             class="navbar navbar-expand-lg bg-dark navbar-light main-menu"
           >
             <button
@@ -84,7 +85,8 @@ var app = new Vue({
                 </li>
               </ul>
             </div>
-          </nav></div> `,
+          </nav>
+        </div> `,
     },
   },
 
