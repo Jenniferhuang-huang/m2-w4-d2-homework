@@ -1,8 +1,98 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+* {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        height: 100%;
+      }
+      #leftside {
+        float: left;
+        width: 30%;
+        min-height: 1400px;
+        height: 100%;
+        background-color: rgb(77, 192, 154);
+      }
+      #rightside {
+        float: right;
+        width: 70%;
+        min-height: 1400px;
+        background-color: rgb(238, 226, 192);
+        position: relative;
+        height: 100%;
+      }
+      #container {
+        background-color: rgba(255, 255, 255, 0.85);
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        min-width: 1100px;
+        min-height: 1300px;
+        border-radius: 0.7em;
+      }
+      header {
+        height: 50px;
+        background-color: rgba(231, 229, 229, 0.5);
+        font-size: 2.75em;
+        padding: 0.5em;
+        color: rgb(216, 150, 7);
+        position: fixed;
+        top: -20px;
+      }
+      header span {
+        font-family: "Sacramento", cursive;
+      }
+      main {
+        position: relative;
+        height: 100%;
+      }
+      main h2 {
+        position: absolute;
+        left: 40%;
+        top: 30px;
+        margin: 25px 0 200px 50px;
+        color: rgb(60, 190, 160);
+        text-transform: uppercase;
+      }
+      main #photos img {
+        margin: 0.75em;
+        border: 0.85em solid rgb(255, 255, 255);
+        margin-top: -2500px;
+      }
+      section#blogposts {
+        position: absolute;
+        left: 20%;
+        top: 70px;
+        padding: 50px;
+      }
+      main .post {
+        margin: 25px;
+        padding: 25px;
+        border: 2px solid rgba(83, 78, 58, 0.6);
+        border-radius: 0.5em;
+      }
+      footer {
+        position: fixed;
+        bottom: 0;
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.85em;
+      }
+      .post img {
+        width: 70px;
+        height: 70px;
+      }
+      #infobox {
+        width: 200px;
+        background-color: black;
+        opacity: 0.9;
+        color: white;
+        position: fixed;
+        top: 25%;
+        padding-left: 10px;
+        border-radius: 15px;
+        padding-right: 10px;
+      }
+      .navbar {
+        margin-left: 225px;
+        font-weight: bold;
+      }
