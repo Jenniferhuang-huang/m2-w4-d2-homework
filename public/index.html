@@ -66,14 +66,21 @@
               <p>{{post.message}}</p>
             </div>
             <div id="infobox" v-for="post in posts" v-if="post.showbox">
+              <p
+                class="closeBtn closeBtnB"
+                v-on:click="$emit('close', post.showbox = false)"
+              >
+                &#10006;
+              </p>
               <h3>{{post.name}}</h3>
               <p>Foodie_level: {{post.foodie_level}}</p>
               <p>Bio: {{post.bio}}</p>
               <button
-                type="button"
-                class="btn-close btn-close-white"
-                aria-label="Close"
-              ></button>
+                class="closeBtn closeBtnB"
+                v-on:click="$emit('close', post.showbox = false)"
+              >
+                Close
+              </button>
             </div>
           </section>
         </main>
